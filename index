@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ohmi Radio | วิทยุน่ารัก สดใส</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/9M3QqX2.png" />
+
+  <!-- ✅ ฟอนต์ -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: url('https://i.imgur.com/YFbVnNp.png'); /* ลายการ์ตูน */
+      background-size: 120px;
+      background-repeat: repeat;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-align: center;
+    }
+
+    .overlay {
+      background: linear-gradient(to bottom, #ffdde1cc, #ee9ca7cc);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff5e78;
+      margin-bottom: 0.3em;
+    }
+
+    .slogan {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #c94e73;
+      margin-bottom: 1.2em;
+    }
+
+    .radio-player {
+      margin-top: 25px;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 15px;
+    }
+
+    .mascot {
+      margin-top: 30px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .mascot img {
+      width: 150px;
+      max-width: 60%;
+      height: auto;
+    }
+
+    .dj-info {
+      background: rgba(255, 255, 255, 0.85);
+      margin-top: 40px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .dj-info h2 {
+      margin-top: 0;
+      color: #ff5e78;
+    }
+
+    .share-buttons {
+      margin-top: 30px;
+    }
+
+    .share-buttons a {
+      margin: 5px 8px;
+      text-decoration: none;
+      font-size: 1em;
+      color: white;
+      background-color: #ff5e78;
+      padding: 10px 16px;
+      border-radius: 25px;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .share-buttons a:hover {
+      background-color: #e14c64;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      .slogan { font-size: 1em; }
+      .dj-info p { font-size: 0.95em; }
+      .share-buttons a { font-size: 0.9em; padding: 8px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>🎀 Ohmi Radio 🎀</h1>
+      <div class="slogan">"เติมพลังใจให้สดใส ด้วยเสียงเพลงทุกวัน!"</div>
+
+      <div class="radio-player">
+        <audio controls autoplay>
+          <source src="http://ohmi-design.com:8002" type="audio/mpeg" />
+          เบราว์เซอร์ของคุณไม่รองรับการเล่นวิทยุออนไลน์
+        </audio>
+      </div>
+
+      <div class="mascot">
+        <img src="https://i.imgur.com/9M3QqX2.png" alt="Cute Mascot" />
+      </div>
+
+      <div class="dj-info">
+        <h2>🎧 ดีเจประจำตอนนี้</h2>
+        <p id="dj-name">กำลังโหลด...</p>
+      </div>
+
+      <div class="share-buttons">
+        <p>📢 แชร์วิทยุน่ารักนี้ให้เพื่อนฟังกันเถอะ!</p>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://ohmi-design.com:8002" target="_blank">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=http://ohmi-design.com:8002&text=ฟัง%20Ohmi%20Radio%20ด้วยกันสิ!%20🎶" target="_blank">X (Twitter)</a>
+        <a href="https://social-plugins.line.me/lineit/share?url=http://ohmi-design.com:8002" target="_blank">LINE</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ ระบบเปลี่ยน DJ อัตโนมัติตามเวลา -->
+  <script>
+    function updateDJ() {
+      const djName = document.getElementById("dj-name");
+      const hour = new Date().getHours();
+
+      if (hour >= 6 && hour < 12) {
+        djName.textContent = "ดีเจน้ำผึ้ง – ส่งความหวานละมุนในทุกเช้า ☀️";
+      } else if (hour >= 12 && hour < 18) {
+        djName.textContent = "ดีเจจูจู – เปิดเพลงฮิตติดหูช่วงบ่าย 🎶";
+      } else {
+        djName.textContent = "ดีเจมูมู่ – ชวนคุณยิ้มก่อนนอนทุกค่ำคืน 🌙";
+      }
+    }
+
+    updateDJ();
+    setInterval(updateDJ, 10 * 60 * 1000); // อัปเดตทุก 10 นาที
+  </script>
+</body>
+</html>
